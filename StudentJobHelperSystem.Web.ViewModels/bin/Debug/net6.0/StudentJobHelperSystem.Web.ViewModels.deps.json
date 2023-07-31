@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "StudentJobHelperSystem.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "StudentJobHelperSystem.Common": "1.0.0"
+        },
+        "runtime": {
+          "StudentJobHelperSystem.Web.ViewModels.dll": {}
+        }
+      },
+      "StudentJobHelperSystem.Common/1.0.0": {
+        "runtime": {
+          "StudentJobHelperSystem.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StudentJobHelperSystem.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentJobHelperSystem.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

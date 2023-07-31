@@ -1,0 +1,15 @@
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\bin\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.deps.json
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\bin\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\bin\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.pdb
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.csproj.AssemblyReference.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.AssemblyInfoInputs.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.AssemblyInfo.cs
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.csproj.CoreCompileInputs.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\refint\StudentJobHelperSystem.Web.ViewModels.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.pdb
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\ref\StudentJobHelperSystem.Web.ViewModels.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\bin\Debug\net6.0\StudentJobHelperSystem.Common.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\bin\Debug\net6.0\StudentJobHelperSystem.Common.pdb
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Web.ViewModels\obj\Debug\net6.0\StudentJobHelperSystem.Web.ViewModels.csproj.CopyComplete
