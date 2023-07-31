@@ -1,0 +1,12 @@
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\bin\Debug\net6.0\StudentJobHelperSystem.Common.deps.json
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\bin\Debug\net6.0\StudentJobHelperSystem.Common.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\bin\Debug\net6.0\StudentJobHelperSystem.Common.pdb
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.csproj.AssemblyReference.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.AssemblyInfoInputs.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.AssemblyInfo.cs
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.csproj.CoreCompileInputs.cache
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\refint\StudentJobHelperSystem.Common.dll
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\StudentJobHelperSystem.Common.pdb
+D:\Programming\SoftUni\C# Web\Project\CSharpWebAdvanced-CourseProject\StudentJobHelperSystem.Common\obj\Debug\net6.0\ref\StudentJobHelperSystem.Common.dll
