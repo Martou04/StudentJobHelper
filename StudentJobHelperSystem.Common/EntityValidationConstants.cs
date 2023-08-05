@@ -32,6 +32,9 @@
 
             public const int EmailMinLength = 7;
             public const int EmailMaxLength = 35;
+
+            public const string SalaryMinValue = "0";
+            public const string SalaryMaxValue = "2000";
         }
 
         public static class Employer
