@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentJobHelperSystem.Common\StudentJobHelperSystem.Common.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Data.Models\StudentJobHelperSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Data\StudentJobHelperSystem.Data.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Web.ViewModels\StudentJobHelperSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

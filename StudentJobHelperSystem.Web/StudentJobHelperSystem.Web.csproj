@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-StudentJobHelperSystem.Web-6026f342-b3a4-4bea-9bfc-d86c9e335c2e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentJobHelperSystem.Common\StudentJobHelperSystem.Common.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Data.Models\StudentJobHelperSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Data\StudentJobHelperSystem.Data.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Services.Data\StudentJobHelperSystem.Services.Data.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Web.Infrastructure\StudentJobHelperSystem.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Web.ViewModels\StudentJobHelperSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
