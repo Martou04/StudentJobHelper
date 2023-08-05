@@ -17,7 +17,7 @@
 }(function( $ ) {
 
 $.extend( $.fn, {
-
+	F
 	// https://jqueryvalidation.org/validate/
 	validate: function( options ) {
 

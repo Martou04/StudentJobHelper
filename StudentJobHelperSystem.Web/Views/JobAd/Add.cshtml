@@ -1,0 +1,15 @@
+﻿@model JobAdFormModel
+
+@{
+    ViewData["Title"] = "Add Job Offer";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<partial name="_JobAdFormPartial" model="@Model" />
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

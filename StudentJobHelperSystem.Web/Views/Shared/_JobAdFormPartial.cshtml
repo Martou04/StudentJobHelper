@@ -1,0 +1,79 @@
+﻿@model JobAdFormModel
+
+<div class="row">
+    <div clas="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="Title..." />
+                <span asp-validation-for="Title" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" placeholder="Description..." />
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary"></label>
+                <input asp-for="Salary" class="form-control" placeholder="Salary..." />
+                <span asp-validation-for="Salary" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityOfWork"></label>
+                <input asp-for="CityOfWork" class="form-control" placeholder="CityOfWork..." />
+                <span asp-validation-for="CityOfWork" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfEmployment"></label>
+                <input asp-for="TypeOfEmployment" class="form-control" placeholder="TypeOfEmployment..." />
+                <span asp-validation-for="TypeOfEmployment" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ForeignLanguage"></label>
+                <input asp-for="ForeignLanguage" class="form-control" placeholder="ForeignLanguage..." />
+                <span asp-validation-for="ForeignLanguage" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OffDaysCount"></label>
+                <input asp-for="OffDaysCount" class="form-control" placeholder="OffDaysCount..." />
+                <span asp-validation-for="OffDaysCount" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HomeOffice"></label>
+                <select asp-for="HomeOffice" class="form-control">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+                <span asp-validation-for="HomeOffice" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="PhoneNumber..." />
+                <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email..." />
+                <span asp-validation-for="Email" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogoUrl"></label>
+                <input asp-for="LogoUrl" class="form-control" placeholder="LogoUrl..." />
+                <span asp-validation-for="LogoUrl" class="small text-danger"></span>
+            </div>
+            <div class ="form-group">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control">
+                @foreach(var category in Model.Categories)
+                {
+                    <option value="@category.Id">@category.Name</option>                    
+                }
+                </select>
+                <span asp-validation-for="CategoryId" class="small text-danger"></span>
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
