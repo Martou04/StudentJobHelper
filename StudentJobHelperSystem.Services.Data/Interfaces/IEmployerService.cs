@@ -16,5 +16,7 @@ namespace StudentJobHelperSystem.Services.Data.Interfaces
         Task<bool> UserHasWorkplace(string userId);
 
         Task Create(string userId, BecomeEmployerFormModel model);
+
+        Task<string?> GetEmployerIdByUserId(string userId);
     }
 }

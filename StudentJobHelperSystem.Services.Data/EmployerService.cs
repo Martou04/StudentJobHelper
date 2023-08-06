@@ -55,6 +55,17 @@ namespace StudentJobHelperSystem.Services.Data
 
             await this.dbContext.Employers.AddAsync(employer);
             await this.dbContext.SaveChangesAsync();
-        }   
+        }
+
+        public async Task<string?> GetEmployerIdByUserId(string userId)
+        {
+            Employer? employer = await this.dbContext
+                .Employers
+                .FirstOrDefaultAsync(e => e.UserId.ToString() == userId);
+            if(employer == null)
+                return null;
+
+            return employer.Id.ToString();
+        }
     }
 }

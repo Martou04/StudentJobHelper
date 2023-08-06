@@ -10,7 +10,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description"></label>
-                <input asp-for="Description" class="form-control" placeholder="Description..." />
+                <textarea asp-for="Description" rows="4" class="form-control" placeholder="Description..."></textarea>
+
                 <span asp-validation-for="Description" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -20,22 +21,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="CityOfWork"></label>
-                <input asp-for="CityOfWork" class="form-control" placeholder="CityOfWork..." />
+                <input asp-for="CityOfWork" class="form-control" placeholder="City of workplace..." />
                 <span asp-validation-for="CityOfWork" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeOfEmployment"></label>
-                <input asp-for="TypeOfEmployment" class="form-control" placeholder="TypeOfEmployment..." />
+                <select asp-for="TypeOfEmployment" class="form-control">
+                    <option value="Internship">Internship</option>
+                    <option value="Freelance project">Freelance project</option>
+                    <option value="Full time">Full time</option>
+                    <option value="Part time">Part time</option>
+                    <option value="Flexible time">Flexible time</option>
+                </select>
                 <span asp-validation-for="TypeOfEmployment" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ForeignLanguage"></label>
-                <input asp-for="ForeignLanguage" class="form-control" placeholder="ForeignLanguage..." />
+                <input asp-for="ForeignLanguage" class="form-control" placeholder="Foreign language..." />
                 <span asp-validation-for="ForeignLanguage" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OffDaysCount"></label>
-                <input asp-for="OffDaysCount" class="form-control" placeholder="OffDaysCount..." />
+                <input asp-for="OffDaysCount" class="form-control" placeholder="Off days count..." />
                 <span asp-validation-for="OffDaysCount" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber" class="form-control" placeholder="PhoneNumber..." />
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone number..." />
                 <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,7 +65,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="LogoUrl"></label>
-                <input asp-for="LogoUrl" class="form-control" placeholder="LogoUrl..." />
+                <input asp-for="LogoUrl" class="form-control" placeholder="Logo image link..." />
                 <span asp-validation-for="LogoUrl" class="small text-danger"></span>
             </div>
             <div class ="form-group">

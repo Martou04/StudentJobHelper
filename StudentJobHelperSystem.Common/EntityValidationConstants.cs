@@ -21,9 +21,6 @@
             public const int CityOfWorkMinLength = 3;
             public const int CityOfWorkMaxLength = 30;
 
-            public const int TypeOfEmploymentMinLength = 3;
-            public const int TypeOfEmploymentMaxLength = 50;
-
             public const int ForeignLanguageMinLength = 3;
             public const int ForeignLanguageMaxLength = 30;
 

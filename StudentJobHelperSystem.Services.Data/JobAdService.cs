@@ -5,6 +5,9 @@
 
     using Interfaces;
     using Web.ViewModels.Home;
+    using StudentJobHelperSystem.Web.ViewModels.JobAd;
+    using StudentJobHelperSystem.Data.Models;
+    using System.ComponentModel;
 
     public class JobAdService : IJobAdService
     {
@@ -30,6 +33,29 @@
                 .ToArrayAsync();
 
             return lastThreeJobAds;
+        }
+
+        public async Task Create(JobAdFormModel formModel, string agentId)
+        {
+            JobAds jobAd = new JobAds
+            {
+                Title = formModel.Title,
+                Description = formModel.Description,
+                Salary = formModel.Salary,
+                CityOfWork = formModel.CityOfWork,
+                TypeOfEmployment = formModel.TypeOfEmployment,
+                ForeignLanguage = formModel.ForeignLanguage,
+                OffDaysCount = formModel.OffDaysCount,
+                HomeOffice = formModel.HomeOffice,
+                PhoneNumber = formModel.PhoneNumber,
+                Email = formModel.Email,
+                LogoUrl = formModel.LogoUrl,
+                CategoryId = formModel.CategoryId,
+                EmployerId = Guid.Parse(agentId),
+            };
+
+            await this.dbContext.JobAds.AddAsync(jobAd);
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

@@ -32,8 +32,7 @@ namespace StudentJobHelperSystem.Web.ViewModels.JobAd
         public string CityOfWork { get; set; } = null!;
 
         [Required]
-        [StringLength(TypeOfEmploymentMaxLength,MinimumLength =TypeOfEmploymentMinLength)]
-        [Display(Name ="Type of employment")]
+        [Display(Name ="Employment type")]
         public string TypeOfEmployment { get; set; } = null!;
 
         [Required]

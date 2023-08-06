@@ -4,5 +4,7 @@
     public interface ICategoryService
     {
         Task<IEnumerable<JobAdSelectCategoryFormModel>> AllCategories();
+
+        Task<bool> ExistsById(int id);
     }
 }

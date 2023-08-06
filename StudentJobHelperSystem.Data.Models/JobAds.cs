@@ -31,7 +31,6 @@ namespace StudentJobHelperSystem.Data.Models
         public string CityOfWork { get; set; } = null!;
 
         [Required]
-        [MaxLength(TypeOfEmploymentMaxLength)]
         public string TypeOfEmployment { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
