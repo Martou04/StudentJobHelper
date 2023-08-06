@@ -16,6 +16,9 @@ namespace StudentJobHelperSystem.Data.Configurations
             builder.Property(j => j.CreatedOn)
                 .HasDefaultValueSql("GETDATE()");
 
+            builder.Property(j => j.IsActive)
+                .HasDefaultValue(true);
+
             builder
                 .HasOne(j => j.Category)
                 .WithMany(c => c.JobAds)

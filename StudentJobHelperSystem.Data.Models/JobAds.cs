@@ -35,6 +35,8 @@ namespace StudentJobHelperSystem.Data.Models
 
         public DateTime CreatedOn { get; set; }
 
+        public bool IsActive { get; set; }
+
         public int OffDaysCount { get; set; }
 
         [Required]

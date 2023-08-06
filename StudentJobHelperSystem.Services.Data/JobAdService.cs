@@ -24,6 +24,7 @@
         {
             IEnumerable<IndexViewModel> lastThreeJobAds = await this.dbContext
                 .JobAds
+                .Where(j => j.IsActive == true)
                 .OrderByDescending(j => j.CreatedOn)
                 .Take(3)
                 .Select(j => new IndexViewModel
@@ -96,6 +97,7 @@
             };
 
             IEnumerable<JobAdAllViewModel> allJobAds = await jobAdsQuery
+                .Where(j => j.IsActive == true)
                 .Skip((queryModel.CurrentPage - 1) * queryModel.JobAdsPerPage)
                 .Take(queryModel.JobAdsPerPage)
                 .Select(j=> new JobAdAllViewModel 
