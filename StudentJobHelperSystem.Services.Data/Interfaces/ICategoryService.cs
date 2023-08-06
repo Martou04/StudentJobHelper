@@ -6,5 +6,7 @@
         Task<IEnumerable<JobAdSelectCategoryFormModel>> AllCategories();
 
         Task<bool> ExistsById(int id);
+
+        Task<IEnumerable<string>> AllCategoryName();
     }
 }

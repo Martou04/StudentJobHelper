@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using StudentJobHelperSystem.Services.Data;
     using StudentJobHelperSystem.Services.Data.Interfaces;
+    using StudentJobHelperSystem.Services.Data.Models.JobAd;
     using StudentJobHelperSystem.Web.Infrastructure.Extentions;
     using StudentJobHelperSystem.Web.ViewModels.JobAd;
     using static Common.NotificationMessagesConstants;
@@ -23,10 +24,18 @@
             this.jobAdService = jobAdService;
         }
 
+        [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllJobAdQueryModel queryModel)
         {
-            return this.Ok();
+            AllJobAdFilteredAndPagedServiceModel serviceModel = 
+                await this.jobAdService.All(queryModel);
+
+            queryModel.JobAds = serviceModel.jobAds;
+            queryModel.TotalJobAds = serviceModel.TotalJobAdCount;
+            queryModel.Categories = await this.categoryService.AllCategoryName();
+
+            return this.View(queryModel);
         }
 
         [HttpGet]

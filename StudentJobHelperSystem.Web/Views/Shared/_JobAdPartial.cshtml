@@ -1,0 +1,23 @@
+﻿@model JobAdAllViewModel
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@Model.LogoUrl" />
+        <div class="card-body text-center">
+            <h4>@Model.Title</h4>
+            <h6>City of workplace: <b>@Model.CityOfWork</b></h6>
+            <h6>
+                Salary Per Month:
+                <b>@Model.Salary BGN</b>
+            </h6>
+            <br />
+            <a asp-controller="JobAd" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+            <a asp-controller="JobAd" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+            <p></p>
+
+            
+
+        </div>
+    </div>
+</div>
+

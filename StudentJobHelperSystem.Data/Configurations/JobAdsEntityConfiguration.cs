@@ -14,7 +14,7 @@ namespace StudentJobHelperSystem.Data.Configurations
         public void Configure(EntityTypeBuilder<JobAds> builder)
         {
             builder.Property(j => j.CreatedOn)
-                .HasDefaultValue(DateTime.UtcNow);
+                .HasDefaultValueSql("GETDATE()");
 
             builder
                 .HasOne(j => j.Category)

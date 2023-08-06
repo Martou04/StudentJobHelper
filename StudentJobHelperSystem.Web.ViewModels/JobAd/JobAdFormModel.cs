@@ -22,7 +22,6 @@ namespace StudentJobHelperSystem.Web.ViewModels.JobAd
         [StringLength(DescriptionMaxLength,MinimumLength =DescriptionMinLength)]
         public string Description { get; set; } = null!;
 
-        [Range(typeof(decimal),SalaryMinValue,SalaryMaxValue)]
         [Display(Name ="Monthly Salary")]
         public decimal Salary { get; set; }
 

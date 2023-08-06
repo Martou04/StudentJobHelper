@@ -10,6 +10,7 @@
     <ProjectReference Include="..\StudentJobHelperSystem.Common\StudentJobHelperSystem.Common.csproj" />
     <ProjectReference Include="..\StudentJobHelperSystem.Data.Models\StudentJobHelperSystem.Data.Models.csproj" />
     <ProjectReference Include="..\StudentJobHelperSystem.Data\StudentJobHelperSystem.Data.csproj" />
+    <ProjectReference Include="..\StudentJobHelperSystem.Services.Data.Models\StudentJobHelperSystem.Services.Data.Models.csproj" />
     <ProjectReference Include="..\StudentJobHelperSystem.Web.ViewModels\StudentJobHelperSystem.Web.ViewModels.csproj" />
   </ItemGroup>
 
