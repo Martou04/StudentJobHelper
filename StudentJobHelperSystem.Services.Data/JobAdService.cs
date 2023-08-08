@@ -163,16 +163,13 @@
             return allEmployeeCandidatesJobAd;
         }
 
-        public async Task<JobAdDetailsViewModel?> GetDetailsById(string jobAdId)
+        public async Task<JobAdDetailsViewModel> GetDetailsById(string jobAdId)
         {
-            JobAds? jobAd = await this.dbContext
+            JobAds jobAd = await this.dbContext
                 .JobAds
                 .Include(j => j.Category)
                 .Where(j => j.IsActive)
-                .FirstOrDefaultAsync(j => j.Id.ToString() == jobAdId);
-
-            if (jobAd == null)
-                return null;
+                .FirstAsync(j => j.Id.ToString() == jobAdId);
 
             return new JobAdDetailsViewModel()
             {
@@ -190,6 +187,41 @@
                 PhoneNumber = jobAd.PhoneNumber
             };
             
+        }
+
+        public async Task<bool> ExistsById(string jobAdId)
+        {
+            bool result = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive)
+                .AnyAsync(j=>j.Id.ToString()==jobAdId);
+
+            return result; 
+        }
+
+        public async Task<JobAdFormModel> GetJobAdForEditById(string jobAdId)
+        {
+            JobAds jobAd = await this.dbContext
+                .JobAds
+                .Include(j => j.Category)
+                .Where(j => j.IsActive)
+                .FirstAsync(j => j.Id.ToString() == jobAdId);
+
+            return new JobAdFormModel
+            {
+                Title = jobAd.Title,
+                Description = jobAd.Description,
+                Salary = jobAd.Salary,
+                CityOfWork = jobAd.CityOfWork,
+                TypeOfEmployment = jobAd.TypeOfEmployment,
+                ForeignLanguage = jobAd.ForeignLanguage,
+                OffDaysCount = jobAd.OffDaysCount,
+                HomeOffice = jobAd.HomeOffice,
+                PhoneNumber = jobAd.PhoneNumber,
+                Email = jobAd.Email,
+                LogoUrl = jobAd.LogoUrl,
+                CategoryId = jobAd.CategoryId
+            };
         }
     }
 }

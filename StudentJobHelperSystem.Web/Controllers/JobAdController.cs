@@ -108,15 +108,17 @@
         [AllowAnonymous]
         public async Task<IActionResult> Details(string id)
         {
-            JobAdAllViewModel? viewModel = await this.jobAdService
-                .GetDetailsById(id);
-
-            if (viewModel == null)
-            { 
+            bool jobAdExists = await this.jobAdService
+                .ExistsById(id);
+            if(!jobAdExists)
+            {
                 this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
 
                 return RedirectToAction("All", "JobAd");
             }
+
+            JobAdDetailsViewModel viewModel = await this.jobAdService
+                .GetDetailsById(id);
 
             return View(viewModel);
         }
@@ -142,6 +144,12 @@
             }
 
             return this.View(myJobAd);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+
         }
     }
 }

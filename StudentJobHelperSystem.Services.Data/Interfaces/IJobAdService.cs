@@ -15,6 +15,10 @@
 
         Task<IEnumerable<JobAdAllViewModel>> AllByUserId(string userId);
 
-        Task<JobAdDetailsViewModel?> GetDetailsById(string jobAdId);
+        Task<JobAdDetailsViewModel> GetDetailsById(string jobAdId);
+
+        Task<bool> ExistsById(string jobAdId);
+
+        Task<JobAdFormModel> GetJobAdForEditById(string jobAdId);
     }
 }
