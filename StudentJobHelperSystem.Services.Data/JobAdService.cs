@@ -10,6 +10,7 @@
     using System.ComponentModel;
     using StudentJobHelperSystem.Services.Data.Models.JobAd;
     using StudentJobHelperSystem.Web.ViewModels.JobAd.Enums;
+    using StudentJobHelperSystem.Web.ViewModels.Employer;
 
     public class JobAdService : IJobAdService
     {
@@ -118,6 +119,77 @@
                 TotalJobAdCount = totalJobAds,
                 jobAds = allJobAds
             };
+        }
+
+        public async Task<IEnumerable<JobAdAllViewModel>> AllByEmployerId(string employerId)
+        {
+            IEnumerable<JobAdAllViewModel> allEmployerJobAd = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive &&
+                            j.EmployerId.ToString() == employerId)
+                .Select(j => new JobAdAllViewModel()
+                {
+                    Id = j.Id.ToString(),
+                    Title = j.Title,
+                    CityOfWork = j.CityOfWork,
+                    LogoUrl = j.LogoUrl,
+                    Salary = j.Salary,
+                    HomeOffice = j.HomeOffice
+
+                })
+                .ToArrayAsync();
+
+            return allEmployerJobAd;
+        }
+
+        public async Task<IEnumerable<JobAdAllViewModel>> AllByUserId(string userId)
+        {
+            IEnumerable<JobAdAllViewModel> allEmployeeCandidatesJobAd = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive &&
+                            j.WorkerId.HasValue &&
+                            j.WorkerId.ToString() == userId)
+                .Select(j=> new JobAdAllViewModel() 
+                {
+                    Id = j.Id.ToString(),
+                    Title = j.Title,
+                    CityOfWork = j.CityOfWork,
+                    LogoUrl = j.LogoUrl,
+                    Salary = j.Salary,
+                    HomeOffice = j.HomeOffice
+                })
+                .ToArrayAsync();
+
+            return allEmployeeCandidatesJobAd;
+        }
+
+        public async Task<JobAdDetailsViewModel?> GetDetailsById(string jobAdId)
+        {
+            JobAds? jobAd = await this.dbContext
+                .JobAds
+                .Include(j => j.Category)
+                .Where(j => j.IsActive)
+                .FirstOrDefaultAsync(j => j.Id.ToString() == jobAdId);
+
+            if (jobAd == null)
+                return null;
+
+            return new JobAdDetailsViewModel()
+            {
+                Title = jobAd.Title,
+                Description = jobAd.Description,
+                Salary = jobAd.Salary,
+                CityOfWork = jobAd.CityOfWork,
+                TypeOfEmployment = jobAd.TypeOfEmployment,
+                OffDaysCount = jobAd.OffDaysCount,
+                ForeignLanguage = jobAd.ForeignLanguage,
+                HomeOffice = jobAd.HomeOffice,
+                Category = jobAd.Category.Name,
+                LogoUrl= jobAd.LogoUrl,
+                Email = jobAd.Email,
+                PhoneNumber = jobAd.PhoneNumber
+            };
+            
         }
     }
 }

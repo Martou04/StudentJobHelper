@@ -103,5 +103,45 @@
 
             return this.RedirectToAction("All","JobAd");
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(string id)
+        {
+            JobAdAllViewModel? viewModel = await this.jobAdService
+                .GetDetailsById(id);
+
+            if (viewModel == null)
+            { 
+                this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
+
+                return RedirectToAction("All", "JobAd");
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Mine()
+        {
+            List<JobAdAllViewModel> myJobAd = new List<JobAdAllViewModel>();
+
+            string userId = this.User.GetId()!;
+            bool isUserEmployer = await this.employerService
+                .EmployerExistByUserId(userId);
+
+            if(isUserEmployer)
+            {
+                string? employerId = await this.employerService.GetEmployerIdByUserId(userId);
+
+                myJobAd.AddRange(await this.jobAdService.AllByEmployerId(employerId!));
+            }
+            else
+            {
+                myJobAd.AddRange(await this.jobAdService.AllByUserId(userId));
+            }
+
+            return this.View(myJobAd);
+        }
     }
 }
