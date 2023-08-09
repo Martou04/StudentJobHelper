@@ -194,7 +194,7 @@
             bool result = await this.dbContext
                 .JobAds
                 .Where(j => j.IsActive)
-                .AnyAsync(j=>j.Id.ToString()==jobAdId);
+                .AnyAsync(j => j.Id.ToString() == jobAdId);
 
             return result; 
         }
@@ -222,6 +222,39 @@
                 LogoUrl = jobAd.LogoUrl,
                 CategoryId = jobAd.CategoryId
             };
+        }
+
+        public async Task<bool> IsEmployerWithIdOwnerOfJobAdWithId(string jobAdId, string employerId)
+        {
+            JobAds jobAd = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive)
+                .FirstAsync(j => j.Id.ToString() == jobAdId);
+
+            return jobAd.EmployerId.ToString() == employerId;
+        }
+
+        public async Task EditJobAdByIdAndFormModel(string jobAdId, JobAdFormModel formModel)
+        {
+            JobAds jobAd = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive)
+                .FirstAsync(j => j.Id.ToString() == jobAdId);
+
+            jobAd.Title = formModel.Title;
+            jobAd.Description = formModel.Description;
+            jobAd.Salary = formModel.Salary;
+            jobAd.CityOfWork = formModel.CityOfWork;
+            jobAd.TypeOfEmployment = formModel.TypeOfEmployment;
+            jobAd.OffDaysCount = formModel.OffDaysCount;
+            jobAd.ForeignLanguage = formModel.ForeignLanguage;
+            jobAd.HomeOffice = formModel.HomeOffice;
+            jobAd.PhoneNumber = formModel.PhoneNumber;
+            jobAd.Email = formModel.Email;
+            jobAd.LogoUrl = formModel.LogoUrl;
+            jobAd.CategoryId = formModel.CategoryId;
+
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

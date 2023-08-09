@@ -50,14 +50,14 @@
 
                 return this.RedirectToAction("Become", "Employer");
             }
-
-
+            
+            
             JobAdFormModel model = new JobAdFormModel()
             {
                 Categories = await this.categoryService.AllCategories()
             };
 
-            return View(model);
+            return View(model); 
         }
 
         [HttpPost]
@@ -117,10 +117,19 @@
                 return RedirectToAction("All", "JobAd");
             }
 
-            JobAdDetailsViewModel viewModel = await this.jobAdService
-                .GetDetailsById(id);
+            try
+            {
+                JobAdDetailsViewModel viewModel = await this.jobAdService
+               .GetDetailsById(id);
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+
+           
         }
 
         [HttpGet]
@@ -132,24 +141,134 @@
             bool isUserEmployer = await this.employerService
                 .EmployerExistByUserId(userId);
 
-            if(isUserEmployer)
+            try
             {
-                string? employerId = await this.employerService.GetEmployerIdByUserId(userId);
+                if (isUserEmployer)
+                {
+                    string? employerId = await this.employerService.GetEmployerIdByUserId(userId);
 
-                myJobAd.AddRange(await this.jobAdService.AllByEmployerId(employerId!));
+                    myJobAd.AddRange(await this.jobAdService.AllByEmployerId(employerId!));
+                }
+                else
+                {
+                    myJobAd.AddRange(await this.jobAdService.AllByUserId(userId));
+                }
+
+                return this.View(myJobAd);
             }
-            else
+            catch (Exception)
             {
-                myJobAd.AddRange(await this.jobAdService.AllByUserId(userId));
+                return this.GeneralError();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, JobAdFormModel model)
+        {
+            if(!this.ModelState.IsValid)
+            {
+                model.Categories = await this.categoryService.AllCategories();
+
+                return this.View(model);
             }
 
-            return this.View(myJobAd);
+            bool jobAdExists = await this.jobAdService
+               .ExistsById(id);
+            if (!jobAdExists)
+            {
+                this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
+
+                return RedirectToAction("All", "JobAd");
+            }
+
+            bool isUserEmployer = await this.employerService
+                .EmployerExistByUserId(this.User.GetId()!);
+            if (!isUserEmployer)
+            {
+                this.TempData[ErrorMessage] = "You must become an employer in order to edit job offer info!";
+
+                return RedirectToAction("Become", "Employer");
+            }
+
+            string? employerId =
+                await this.employerService.GetEmployerIdByUserId(this.User.GetId()!);
+            bool isEmployerOwner = await this.jobAdService
+                .IsEmployerWithIdOwnerOfJobAdWithId(id, employerId!);
+            if (!isEmployerOwner)
+            {
+                this.TempData[ErrorMessage] = "You must be the employer owner of job offer you want to edit!";
+
+                return this.RedirectToAction("Mine", "JobAd");
+            }
+
+            try
+            {
+                await this.jobAdService.EditJobAdByIdAndFormModel(id, model);
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(string.Empty, "Unexpected error ocurred while trying to update the job offer!");
+                model.Categories = await this.categoryService.AllCategories();
+
+                return this.View(model);
+            }
+
+            return this.RedirectToAction("Details", "JobAd", new { id });
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
+            bool jobAdExists = await this.jobAdService
+               .ExistsById(id);
+            if (!jobAdExists)
+            {
+                this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
 
+                return RedirectToAction("All", "JobAd");
+            }
+
+            bool isUserEmployer = await this.employerService
+                .EmployerExistByUserId(this.User.GetId()!);
+            if(!isUserEmployer)
+            {
+                this.TempData[ErrorMessage] = "You must become an employer in order to edit job offer info!";
+
+                return RedirectToAction("Become","Employer");
+            }
+
+            string? employerId = 
+                await this.employerService.GetEmployerIdByUserId(this.User.GetId()!);
+            bool isEmployerOwner = await this.jobAdService
+                .IsEmployerWithIdOwnerOfJobAdWithId(id, employerId!);
+            if(!isEmployerOwner)
+            {
+                this.TempData[ErrorMessage] = "You must be the employer owner of job offer you want to edit!";
+
+                return this.RedirectToAction("Mine", "JobAd");
+            }
+
+            try
+            {
+                JobAdFormModel formModel = await this.jobAdService
+                .GetJobAdForEditById(id);
+                formModel.Categories = await this.categoryService.AllCategories();
+
+                return this.View(formModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+
+            
+        }
+
+        private IActionResult GeneralError()
+        {
+            this.TempData[ErrorMessage] = "Unexpected error occured!";
+
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

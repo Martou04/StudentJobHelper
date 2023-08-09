@@ -20,5 +20,9 @@
         Task<bool> ExistsById(string jobAdId);
 
         Task<JobAdFormModel> GetJobAdForEditById(string jobAdId);
+
+        Task<bool> IsEmployerWithIdOwnerOfJobAdWithId(string jobAdId, string employerId);
+
+        Task EditJobAdByIdAndFormModel(string jobAdId, JobAdFormModel formModel);
     }
 }

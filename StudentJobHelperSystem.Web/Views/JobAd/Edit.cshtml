@@ -1,0 +1,14 @@
+﻿@model JobAdFormModel
+
+@{
+    ViewBag.Title = "Edit Job Offer";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<partial name="_JobAdFormPartial" model="@Model" />
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
