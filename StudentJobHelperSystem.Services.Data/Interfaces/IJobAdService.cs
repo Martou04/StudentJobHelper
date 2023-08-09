@@ -24,5 +24,9 @@
         Task<bool> IsEmployerWithIdOwnerOfJobAdWithId(string jobAdId, string employerId);
 
         Task EditJobAdByIdAndFormModel(string jobAdId, JobAdFormModel formModel);
+
+        Task<JobAdPreDeleteDetailsViewModel> GetJobAdForDeleteById(string jobAdId);
+
+        Task DeleteJobAdById(string jobAdId);
     }
 }

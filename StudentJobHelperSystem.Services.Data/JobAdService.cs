@@ -25,7 +25,7 @@
         {
             IEnumerable<IndexViewModel> lastThreeJobAds = await this.dbContext
                 .JobAds
-                .Where(j => j.IsActive == true)
+                .Where(j => j.IsActive)
                 .OrderByDescending(j => j.CreatedOn)
                 .Take(3)
                 .Select(j => new IndexViewModel
@@ -255,6 +255,33 @@
             jobAd.Email = formModel.Email;
             jobAd.LogoUrl = formModel.LogoUrl;
             jobAd.CategoryId = formModel.CategoryId;
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<JobAdPreDeleteDetailsViewModel> GetJobAdForDeleteById(string jobAdId)
+        {
+            JobAds jobAd = await this.dbContext
+                .JobAds
+                .Where(j => j.IsActive)
+                .FirstAsync(j => j.Id.ToString() == jobAdId);
+
+            return new JobAdPreDeleteDetailsViewModel()
+            {
+                Title = jobAd.Title,
+                CityOfWork = jobAd.CityOfWork,
+                LogoUrl = jobAd.LogoUrl
+            };
+        }
+
+        public async Task DeleteJobAdById(string jobAdId)
+        {
+            JobAds jobAdToDelete = await this.dbContext
+                .JobAds
+                .Where(j=>j.IsActive)
+                .FirstAsync(j =>j.Id.ToString() == jobAdId);
+
+            jobAdToDelete.IsActive = false;
 
             await this.dbContext.SaveChangesAsync();
         }

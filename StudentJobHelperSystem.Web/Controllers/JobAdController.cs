@@ -94,6 +94,7 @@
                 string jobAdId = 
                      await this.jobAdService.CreateAndReturnId(model, employerId!);
 
+                this.TempData[SuccessMessage] = "Job Offer was added successfully!";
                 return this.RedirectToAction("Details", "JobAd", new { id = jobAdId });
             }
             catch (Exception)
@@ -260,10 +261,99 @@
             catch (Exception)
             {
                 return this.GeneralError();
+            }   
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            bool jobAdExists = await this.jobAdService
+               .ExistsById(id);
+            if (!jobAdExists)
+            {
+                this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
+
+                return RedirectToAction("All", "JobAd");
             }
 
-            
+            bool isUserEmployer = await this.employerService
+                .EmployerExistByUserId(this.User.GetId()!);
+            if (!isUserEmployer)
+            {
+                this.TempData[ErrorMessage] = "You must become an employer in order to edit job offer info!";
+
+                return RedirectToAction("Become", "Employer");
+            }
+
+            string? employerId =
+                await this.employerService.GetEmployerIdByUserId(this.User.GetId()!);
+            bool isEmployerOwner = await this.jobAdService
+                .IsEmployerWithIdOwnerOfJobAdWithId(id, employerId!);
+            if (!isEmployerOwner)
+            {
+                this.TempData[ErrorMessage] = "You must be the employer owner of job offer you want to edit!";
+
+                return this.RedirectToAction("Mine", "JobAd");
+            }
+
+            try
+            {
+                JobAdPreDeleteDetailsViewModel viewModel = 
+                    await this.jobAdService.GetJobAdForDeleteById(id);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id,JobAdPreDeleteDetailsViewModel model)
+        {
+            bool jobAdExists = await this.jobAdService
+               .ExistsById(id);
+            if (!jobAdExists)
+            {
+                this.TempData[ErrorMessage] = "Job offer with the provided id does not exist!";
+
+                return RedirectToAction("All", "JobAd");
+            }
+
+            bool isUserEmployer = await this.employerService
+                .EmployerExistByUserId(this.User.GetId()!);
+            if (!isUserEmployer)
+            {
+                this.TempData[ErrorMessage] = "You must become an employer in order to edit job offer info!";
+
+                return RedirectToAction("Become", "Employer");
+            }
+
+            string? employerId =
+                await this.employerService.GetEmployerIdByUserId(this.User.GetId()!);
+            bool isEmployerOwner = await this.jobAdService
+                .IsEmployerWithIdOwnerOfJobAdWithId(id, employerId!);
+            if (!isEmployerOwner)
+            {
+                this.TempData[ErrorMessage] = "You must be the employer owner of job offer you want to edit!";
+
+                return this.RedirectToAction("Mine", "JobAd");
+            }
+
+            try
+            {
+                await this.jobAdService.DeleteJobAdById(id);
+
+                this.TempData[WarningMessage] = "The Job Offer was successfully deleted!";
+                return this.RedirectToAction("Mine", "JobAd");
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+        }
+
 
         private IActionResult GeneralError()
         {
