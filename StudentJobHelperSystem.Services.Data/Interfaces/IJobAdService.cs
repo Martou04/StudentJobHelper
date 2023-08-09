@@ -7,7 +7,7 @@
     {
         Task<IEnumerable<IndexViewModel>> LastThreeJobAdAsync();
 
-        Task Create(JobAdFormModel formModel, string employerId);
+        Task<string> CreateAndReturnId(JobAdFormModel formModel, string employerId);
 
         Task<AllJobAdFilteredAndPagedServiceModel> All(AllJobAdQueryModel queryModel);
 

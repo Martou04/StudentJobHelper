@@ -91,17 +91,18 @@
                 string? employerId = 
                     await this.employerService.GetEmployerIdByUserId(this.User.GetId()!);
 
-                await this.jobAdService.Create(model, employerId!);
+                string jobAdId = 
+                     await this.jobAdService.CreateAndReturnId(model, employerId!);
+
+                return this.RedirectToAction("Details", "JobAd", new { id = jobAdId });
             }
-            catch (Exception _)
+            catch (Exception)
             {
                 this.ModelState.AddModelError(string.Empty, "Unexpected error occurred while trying to add your new job offer!");
 
                 model.Categories = await this.categoryService.AllCategories();
                 return this.View(model);
             }
-
-            return this.RedirectToAction("All","JobAd");
         }
 
         [HttpGet]

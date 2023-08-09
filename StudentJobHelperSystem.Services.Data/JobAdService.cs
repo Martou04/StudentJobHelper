@@ -39,7 +39,7 @@
             return lastThreeJobAds;
         }
 
-        public async Task Create(JobAdFormModel formModel, string agentId)
+        public async Task<string> CreateAndReturnId(JobAdFormModel formModel, string agentId)
         {
             JobAds jobAd = new JobAds
             {
@@ -60,6 +60,8 @@
 
             await this.dbContext.JobAds.AddAsync(jobAd);
             await this.dbContext.SaveChangesAsync();
+
+            return jobAd.Id.ToString();
         }
 
         public async Task<AllJobAdFilteredAndPagedServiceModel> All(AllJobAdQueryModel queryModel)
